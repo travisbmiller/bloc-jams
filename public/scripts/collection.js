@@ -46,7 +46,7 @@ var updateCollectionView = function(){
   }
 
   var onHover = function(event) {
-    $(this).append(buildAlbumOverlay("album.html"));
+    $(this).append(buildAlbumOverlay("/album.html"));
   };
 
   
