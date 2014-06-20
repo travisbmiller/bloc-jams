@@ -5,26 +5,34 @@ body {
   font-family: 'Open Sans';
   color: white;
   min-height: 100%;
-  background: -webkit-radial-gradient(#2b1339, #380c77);
-  background: radial-gradient(#2b1339, #380c77); }
+  background: -webkit-radial-gradient( #2b1339 , #380c77 );
+  background: radial-gradient( #2b1339 , #380c77 ); 
+  padding-bottom: 150px;
+}
 
 body.landing {
-  background: #5b5579; }
+  background: #5b5579; 
+  padding-bottom: 150px;
+}
 
 body.landing .navbar {
-  margin-bottom: 0; }
+  margin-bottom: 0; 
+}
 
 .player-header-nav {
-  background-color: rgba(123, 70, 163, 0.9); }
+  background-color: rgba(123, 70, 163, 0.9); 
+}
 
 .hero-content {
   background: #2f1d57;
-  padding: 100px 0; }
+  padding: 100px 0; 
+}
 
 .hero-content h1 {
   font-size: 70px;
   margin-bottom: 50px;
-  font-weight: 300; }
+  font-weight: 300; 
+}
 
 /* ----------------------
   Selling Points
@@ -127,8 +135,46 @@ body.landing .navbar {
    text-align: center;
  }
 
+/* ----------------------
+  Album - Play Bar
+  ---------------------*/
 
+  .player-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: rgba( 255, 255, 255, 0.3 );
+    z-index: 100;
+  }
 
+  .player-bar a, .player-bar a:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .player-bar .container {
+    display: table;
+    padding: 0;
+    min-height: 100%;
+  }
+
+  .player-bar-control-group {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .player-bar .left-controls {
+    width: 25%;
+    text-align: left;
+  }
+
+  .play-bar .right-controls {
+    width: 25%;
+    text-align: right;
+  }
 
 /* ----------------------
  collection View
