@@ -1,7 +1,7 @@
 @import "landing";
-  @import "album";
-  @import "collection";
-  @import "player_bar";
+@import "album";
+@import "collection";
+@import "player_bar";
 
 html {
   height: 100%;
@@ -28,3 +28,5 @@ body.landing .navbar {
 .player-header-nav {
   background-color: rgba(123, 70, 163, .9);
 }
+
+/*# sourceMappingURL=app.css.map*/
