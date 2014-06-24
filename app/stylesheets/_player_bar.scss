@@ -33,6 +33,11 @@
       a {
         font-size: 20px;
         vertical-align: middle;
+        opacity: 0.3;
+        transition: 0.3s;
+        &:hover {
+          opacity: 1;
+        }
       }
  
       .previous {
@@ -70,7 +75,13 @@
     .queue-toggle {
       display: inline-block;
       margin-left: 75px;
- 
+      opacity: 0.3;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+
       i {
         font-size: 20px;
       }
