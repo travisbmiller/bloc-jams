@@ -129,6 +129,7 @@ var changeAlbumView = function(album) {
 var updateSeekPercentage = function($seekBar, event) {
   var barWidth = $seekBar.width();
   var offsetX = event.pageX - $seekBar.offset().left;
+  console.log("pageX" + event.pageX + " " + $seekBar.offset().left);
 
   var offsetXPercent = (offsetX  / $seekBar.width()) * 100;
   offsetXPercent = Math.max(0, offsetXPercent);
@@ -182,7 +183,9 @@ var albums = [albumPicasso,albumMarconi];
     });
 
 
-
+var disPosition = function( event ){
+  console.log( event.pageX );
+};
 
 
 if (document.URL.match(/\/album.html/)) {
@@ -192,6 +195,10 @@ if (document.URL.match(/\/album.html/)) {
     changeAlbumView(albums[count]);
     setupSeekBars();
     
+    // $(document).mousemove(function( event ){
+    //   // console.log(" page X = " + event.pageX + " " + " page Y = " + event.pageY);
+    //   console.log(event);
+    // });
 
 
    });
