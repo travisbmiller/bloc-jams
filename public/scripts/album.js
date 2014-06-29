@@ -183,8 +183,8 @@ var albums = [albumPicasso,albumMarconi];
     });
 
 
-var disPosition = function( event ){
-  console.log( event.pageX );
+var disPosition = function(event){
+  console.log( 'Page X =' + ' ' + event.pageX + ' \nPage Y = ' + event.pageY );
 };
 
 
@@ -194,7 +194,9 @@ if (document.URL.match(/\/album.html/)) {
     
     changeAlbumView(albums[count]);
     setupSeekBars();
-    
+    $(document).mousemove(function(event){
+      disPosition(event);
+    });
     // $(document).mousemove(function( event ){
     //   // console.log(" page X = " + event.pageX + " " + " page Y = " + event.pageY);
     //   console.log(event);
