@@ -1,1 +1,1 @@
-{"version":3,"file":"public/javascripts/app.js","sources":[],"names":[],"mappings":""}
+{"version":3,"file":"public/javascripts/app.js","sources":["app/scripts/app.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AACA;AACA;AACA;AAHA;AAAA,C","sourcesContent":["angular.module('BlocJams', []).controller('Landing.controller', ['$scope', function($scope) {\n  console.log(\"Landing.controller\");\n  $scope.subText = \"Turn the music up!\";\n}]);"]}

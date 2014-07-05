@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="BlocJams">
   <head>
     <title>Bloc Jams</title>
   </head>
-  <body class="landing">
+  <body ng-controller='Landing.controller' class='landing'>
 
     <nav class="player-header-nav navbar">
       <div class="container">
@@ -17,7 +17,7 @@
     <div class="hero-content"> <!-- Hero content -->
       <div class="container">
         <h1>Bloc Jams</h1>
-        <h3>Turn the music up!</h3>
+        <h3> {{ subText }} </h3>
       </div>
     </div>
 
@@ -43,8 +43,8 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
-    <script src='/javascripts/app.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src='/scripts/app.js'></script>
     <script src='scripts/landing.js'></script>
   </head>
 
