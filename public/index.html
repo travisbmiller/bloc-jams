@@ -16,8 +16,8 @@
     </nav>
     <div class="hero-content"> <!-- Hero content -->
       <div class="container">
-        <h1>Bloc Jams</h1>
-        <h3> {{ subText }} </h3>
+        <h1 ng-click="shufflePictures(albumURLs)">{{ blocTitle }}</h1>
+        <h3 ng-click="subTextClicked()"> {{ subText }} </h3>
       </div>
     </div>
 
@@ -36,6 +36,13 @@
           <p>Listen to your music on the go. This streaming service is available on all mobile platforms.</p>
         </div> 
       </div>
+      <div class="landing-album-list container">
+       <div class="row">
+         <div class="col-md-4" ng-repeat="albumURL in albumURLs">
+           <img ng-src="{{albumURL}}">
+         </div>
+       </div>
+     </div>
     </div>
 
 
