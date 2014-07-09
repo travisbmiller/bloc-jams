@@ -1,11 +1,28 @@
-// require('./landing');
-// require('./collection');
+
+blocJams = angular.module('BlocJams', ['ui.router']);
+
+blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+   $locationProvider.html5Mode(true);
+ 
+   $stateProvider.state('landing', {
+     url: '/',
+     controller: 'Landing.controller',
+     templateUrl: '/templates/landing.html'
+   });
+ 
+    $stateProvider.state('song', {
+      url: '/song',
+      templateUrl: '/templates/song.html'
+    });  
 
 
-angular.module('BlocJams', []).controller('Landing.controller', ['$scope', function($scope) {
+ }]);
+
+blocJams.controller('Landing.controller', ['$scope', function($scope) {
+
   console.log("Landing.controller");
- $scope.blocTitle = "Bloc Jams";
- $scope.subText = "Turn the music up!";
+  $scope.blocTitle = "Bloc Jams";
+  $scope.subText = "Turn the music up!";
  
   $scope.subTextClicked = function() {
     $scope.subText += '!';
