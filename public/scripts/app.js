@@ -1,15 +1,51 @@
+var albumPicasso = {
+  name: 'The Colors',
+  artist: 'Pablo Picasso',
+  label: 'Cubism',
+  year: '1881',
+  albumArtUrl: '/images/album-placedholder.png',
+  songs: [
+      {name: 'Blue', length: '4:26'},
+      {name: 'Green', length: '3:14'},
+      {name: 'Red', length: '5:01'},
+      {name: 'Pink', length: '3:21'},
+      {name: 'Magenta', length: '2:15'}
+    ]
+};
 
-blocJams = angular.module('BlocJams', ['ui.router']);
+var albumMarconi = {
+  name: 'The Telephone',
+  artist: 'Guglielmo Marconi',
+  label: 'EM',
+  year: '1909',
+  albumArtUrl: '/images/album-placedholder.png',
+  songs: [
+      {name: 'Hello, Operator', length: '1:01'},
+      {name: 'Ring, ring, ring', length: '5:01'},
+      {name: 'Fits in your pocket', length: '3:21'},
+      {name: 'Con yo uhear me now?', length: '3:14'},
+      {name: 'Wrong phone number', length: '2:15'}
+    ]
+};
 
-blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
-   $locationProvider.html5Mode(true);
- 
-   $stateProvider.state('landing', {
-     url: '/',
-     controller: 'Landing.controller',
-     templateUrl: '/templates/landing.html'
-   });
- 
+
+angular
+  .module('BlocJams', ['ui.router']) //array means DEFINE THE MODULE
+  .config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+
+    $stateProvider.state('landing', { //$templateCache
+      url: '/',
+      controller: 'Landing.controller',
+      templateUrl: '/templates/landing.html'
+    });
+
+    $stateProvider.state('collection', {
+      url: '/',
+      controller: 'Collection.controller',
+      templateUrl: '/templates/collection.html'
+    });
+
     $stateProvider.state('song', {
       url: '/song',
       templateUrl: '/templates/song.html'
@@ -18,7 +54,12 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
 
  }]);
 
-blocJams.controller('Landing.controller', ['$scope', function($scope) {
+
+
+
+angular
+  .module('BlocJams')
+  .controller('Landing.controller', ['$scope', function($scope) {
 
   console.log("Landing.controller");
   $scope.blocTitle = "Bloc Jams";
@@ -46,3 +87,15 @@ blocJams.controller('Landing.controller', ['$scope', function($scope) {
    ];
 
  }]);
+
+angular
+  .module('BlocJams')
+  .controller('Collection.controller', ['$scope', function($scope) {
+    
+    console.log("collection controller");
+
+    
+
+}]);
+
+
