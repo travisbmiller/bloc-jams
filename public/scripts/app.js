@@ -3,7 +3,7 @@ var albumPicasso = {
   artist: 'Pablo Picasso',
   label: 'Cubism',
   year: '1881',
-  albumArtUrl: '/images/album-placedholder.png',
+  albumArtUrl: 'images/album-placeholder.png',
   songs: [
       {name: 'Blue', length: '4:26'},
       {name: 'Green', length: '3:14'},
@@ -41,7 +41,7 @@ angular
     });
 
     $stateProvider.state('collection', {
-      url: '/',
+      url: '/collection',
       controller: 'Collection.controller',
       templateUrl: '/templates/collection.html'
     });
@@ -92,7 +92,11 @@ angular
   .module('BlocJams')
   .controller('Collection.controller', ['$scope', function($scope) {
     
-    console.log("collection controller");
+  $scope.albums = [];
+
+  for (var i = 0; i < 33; i++) {
+     $scope.albums.push(angular.copy(albumPicasso));
+   }
 
     
 

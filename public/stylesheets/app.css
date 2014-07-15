@@ -112,6 +112,11 @@ td.song-number {
       line-height: 42px; }
     .collection-album-container .collection-overlay-button .fa-play {
       padding-left: 5px; }
+  .collection-album-container .collection-overlay-content {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center; }
 
 .player-bar {
   position: fixed;
@@ -323,6 +328,14 @@ body.landing .navbar {
 
 .player-header-nav {
   background-color: rgba(123, 70, 163, 0.9); }
+  .player-header-nav .navbar-nav a {
+    line-height: 45px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.2; }
+    .player-header-nav .navbar-nav a:hover {
+      color: rgba(123, 70, 163, 0.9); }
 
 
 /*# sourceMappingURL=app.css.map*/
