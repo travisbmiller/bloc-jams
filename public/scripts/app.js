@@ -51,6 +51,11 @@ angular
       templateUrl: '/templates/song.html'
     });  
 
+    $stateProvider.state('album', {
+      url: '/album',
+      controller: 'Album.controller',
+      templateUrl: '/templates/album.html'
+    })
 
  }]);
 
@@ -102,4 +107,41 @@ angular
 
 }]);
 
+
+angular
+  .module('BlocJams')
+  .controller('Album.controller', ['$scope', function($scope) {
+
+  $scope.album = angular.copy(albumPicasso);
+
+  var playingSong = null,
+      hoveredSong = null;
+
+  $scope.onHoverSong = function(song) {
+    hoveredSong = song;
+  };
+
+  $scope.offHoverSong = function(song) {
+    hoveredSong = null;
+  };
+
+  $scope.getSongState = function(song) {
+    if (song === playingSong) {
+      return 'playing';
+    }
+    else if (song === hoveredSong) {
+      return 'hovered';
+    }
+    return 'default';
+  };
+
+  $scope.playSong = function(song) {
+    playingSong = song;
+  };
+
+  $scope.pauseSong = function(song) {
+    playingSong = null;
+  };
+
+}]);
 
