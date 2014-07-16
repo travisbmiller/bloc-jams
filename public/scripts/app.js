@@ -143,5 +143,15 @@ angular
     playingSong = null;
   };
 
+  $scope.isStripped = function(song,index) {
+    
+    var odd = {}; // empty object
+    
+    odd = index % 2 !== 0; // checking to see if its odd
+    
+    return odd; // returning true or false (true if its odd)
+
+  };
+
 }]);
 

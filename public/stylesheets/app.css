@@ -71,7 +71,7 @@ td.song-number {
   height: 70px;
   text-align: center; }
 
-.odd {
+.stripped {
   background-color: rgba(52, 14, 99, 0.9); }
 
 .collection-album-container {
