@@ -42,8 +42,10 @@ angular
 
     $stateProvider.state('collection', {
       url: '/collection',
-      controller: 'Collection.controller',
-      templateUrl: '/templates/collection.html'
+      views: {
+        'collection': { contoller: 'Collection.controller', templateUrl: '/templates/collection.html'},
+        'playbar': { templateUrl: '/templates/player_bar.html'}
+      }
     });
 
     $stateProvider.state('song', {
