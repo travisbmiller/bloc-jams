@@ -42,10 +42,12 @@ angular
 
     $stateProvider.state('collection', {
       url: '/collection',
-      views: {
-        'main': { contoller: 'Collection.controller', templateUrl: '/templates/collection.html'},
-        'playbar':    { templateUrl: '/templates/player_bar.html'}
-      }
+      controller: 'Collection.controller', 
+      templateUrl: '/templates/collection.html'
+    });
+
+    $stateProvider.state('collection.playerbar', {
+      templateUrl: '/templates/player_bar.html'
     });
 
     $stateProvider.state('song', {
@@ -100,8 +102,9 @@ angular
      $scope.albums.push(angular.copy(albumPicasso));
    }
 
-    
+  
 
 }]);
+
 
 
