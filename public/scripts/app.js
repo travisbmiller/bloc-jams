@@ -34,22 +34,42 @@ angular
   .config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
-    $stateProvider.state('landing', { //$templateCache
+    $stateProvider.state('home', {
+      abstract: true,
+      template: '<ui-view/>'
+    })
+
+    .state('home.landing', { 
       url: '/',
       controller: 'Landing.controller',
       templateUrl: '/templates/landing.html'
-    });
+    })
 
-    $stateProvider.state('collection', {
-      url: '/collection',
-      controller: 'Collection.controller',
+    // Collection
+
+    .state('home.collection', {
+      abstract: true,
+      controller: 'Collection.controller', 
       templateUrl: '/templates/collection.html'
-    });
+    })
+    
+    .state('home.collection.player_bar', { 
+      url: '/collection',
+      templateUrl: '/templates/player_bar.html'
+    })
+    
+    // Album
+    
+    .state('home.album', {
+      abstract: true,
+      controller: 'Album.controller',
+      templateUrl: '/templates/album.html'
+    })
 
-    $stateProvider.state('song', {
-      url: '/song',
-      templateUrl: '/templates/song.html'
-    });  
+    .state('home.album.player_bar',{
+      url: '/album',
+      templateUrl: '/templates/player_bar.html'
+    })
 
     $stateProvider.state('album', {
       url: '/album',
@@ -103,10 +123,9 @@ angular
      $scope.albums.push(angular.copy(albumPicasso));
    }
 
-    
+  
 
 }]);
-
 
 angular
   .module('BlocJams')
@@ -154,4 +173,5 @@ angular
   };
 
 }]);
+
 
