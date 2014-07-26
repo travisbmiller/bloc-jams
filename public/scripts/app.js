@@ -116,8 +116,10 @@ angular
 
 angular
   .module('BlocJams')
-  .controller('Collection.controller', ['$scope', function($scope) {
-    
+  .controller('Collection.controller', ['$scope', 'ConsoleLogger', function($scope, ConsoleLogger) {
+  
+  $scope.consoleLogger = ConsoleLogger;
+
   $scope.albums = [];
 
   for (var i = 0; i < 33; i++) {
@@ -130,7 +132,9 @@ angular
 
 angular
   .module('BlocJams')
-  .controller('Album.controller', ['$scope', 'SongPlayer', 'ConsoleLogger', function($scope, SongPlayer) {
+  .controller('Album.controller', ['$scope', 'SongPlayer', 'ConsoleLogger', function($scope, SongPlayer, ConsoleLogger) {
+
+  $scope.consoleLogger = ConsoleLogger; 
 
   $scope.album = angular.copy(albumPicasso);
 
@@ -180,10 +184,7 @@ angular
   .controller('PlayerBar.controller', ['$scope', 'SongPlayer', 'ConsoleLogger', function($scope, SongPlayer, ConsoleLogger) {
   
   $scope.songPlayer = SongPlayer;
-  $scope.consoleLogger = ConsoleLogger;
   
-  consoleLogger.log();
-
 }]);
  
 angular
@@ -212,8 +213,20 @@ angular
   .module('BlocJams')
   .service('ConsoleLogger', function() {
   
-  log: function() {
-    console.log("hello world");
-  } 
+    return {
+        
+        string: "Type Here",
+        
+        log: function(string) {
+          console.log(string)
+        },
+      
+    }
+
+    // log:function() {
+    //   console.log("hello world");
+    // };
+
+
   
  });
