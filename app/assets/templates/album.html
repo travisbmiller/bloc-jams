@@ -8,7 +8,12 @@
       <h3 class="album-title"> {{ album.name }}</h3>
       <h4 class="album-artist"> {{ album.artist }}</h4>
       <h5 class="album-meta-info"> {{ album.year }} on {{ album.habel }}</h5>
+      <form >
+        <input type='text' class="customInput" ng-model="consoleLogger.string" ng-model-options="{ getterSetter: true }"></input>
+      </form>
+      <div ng-bind="consoleLogger.log(consoleLogger.string)"></div>
     </div>
+
   </div>
 
   <div class="row"> <!-- Song Table -->
@@ -36,7 +41,7 @@
       </tr>
     </table>
   </div>
-
+  
   <div ui-view></div>
 
 </div>

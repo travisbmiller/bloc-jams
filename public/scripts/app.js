@@ -55,7 +55,8 @@ angular
     
     .state('home.collection.player_bar', { 
       url: '/collection',
-      templateUrl: '/templates/player_bar.html'
+      templateUrl: '/templates/player_bar.html',
+      controller: 'PlayerBar.controller'
     })
     
     // Album
@@ -68,7 +69,8 @@ angular
 
     .state('home.album.player_bar',{
       url: '/album',
-      templateUrl: '/templates/player_bar.html'
+      templateUrl: '/templates/player_bar.html',
+      controller: 'PlayerBar.controller'
     })
 
     $stateProvider.state('album', {
@@ -86,7 +88,6 @@ angular
   .module('BlocJams')
   .controller('Landing.controller', ['$scope', function($scope) {
 
-  console.log("Landing.controller");
   $scope.blocTitle = "Bloc Jams";
   $scope.subText = "Turn the music up!";
  
@@ -115,8 +116,10 @@ angular
 
 angular
   .module('BlocJams')
-  .controller('Collection.controller', ['$scope', function($scope) {
-    
+  .controller('Collection.controller', ['$scope', 'ConsoleLogger', function($scope, ConsoleLogger) {
+  
+  $scope.consoleLogger = ConsoleLogger;
+
   $scope.albums = [];
 
   for (var i = 0; i < 33; i++) {
@@ -129,12 +132,13 @@ angular
 
 angular
   .module('BlocJams')
-  .controller('Album.controller', ['$scope', function($scope) {
+  .controller('Album.controller', ['$scope', 'SongPlayer', 'ConsoleLogger', function($scope, SongPlayer, ConsoleLogger) {
+
+  $scope.consoleLogger = ConsoleLogger; 
 
   $scope.album = angular.copy(albumPicasso);
 
-  var playingSong = null,
-      hoveredSong = null;
+  var hoveredSong = null;
 
   $scope.onHoverSong = function(song) {
     hoveredSong = song;
@@ -145,7 +149,7 @@ angular
   };
 
   $scope.getSongState = function(song) {
-    if (song === playingSong) {
+    if (song === SongPlayer.currentSong && SongPlayer.playing) {
       return 'playing';
     }
     else if (song === hoveredSong) {
@@ -155,11 +159,12 @@ angular
   };
 
   $scope.playSong = function(song) {
-    playingSong = song;
+    SongPlayer.setSong($scope.album, song);
+    SongPlayer.play();
   };
 
   $scope.pauseSong = function(song) {
-    playingSong = null;
+    SongPlayer.pause();
   };
 
   $scope.isStripped = function(song,index) {
@@ -174,4 +179,54 @@ angular
 
 }]);
 
+angular
+  .module('BlocJams')
+  .controller('PlayerBar.controller', ['$scope', 'SongPlayer', 'ConsoleLogger', function($scope, SongPlayer, ConsoleLogger) {
+  
+  $scope.songPlayer = SongPlayer;
+  
+}]);
+ 
+angular
+  .module('BlocJams')
+  .service('SongPlayer', function() {
+   
+   return {
+     currentSong: null,
+     currentAlbum: null,
+     playing: false,
+ 
+     play: function() {
+       this.playing = true;
+     },
+     pause: function() {
+       this.playing = false;
+     },
+     setSong: function(album, song) {
+       this.currentAlbum = album;
+       this.currentSong = song;
+     }
+   };
+ });
 
+angular
+  .module('BlocJams')
+  .service('ConsoleLogger', function() {
+  
+    return {
+        
+        string: "Type Here",
+        
+        log: function(string) {
+          console.log(string)
+        },
+      
+    }
+
+    // log:function() {
+    //   console.log("hello world");
+    // };
+
+
+  
+ });

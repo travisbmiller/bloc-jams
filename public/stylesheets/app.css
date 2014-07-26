@@ -329,6 +329,9 @@ body.landing {
 body.landing .navbar {
   margin-bottom: 0; }
 
+.customInput {
+  color: black; }
+
 .player-header-nav {
   background-color: rgba(123, 70, 163, 0.9); }
   .player-header-nav .navbar-nav a {
