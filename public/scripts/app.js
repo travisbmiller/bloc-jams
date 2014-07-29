@@ -116,9 +116,8 @@ angular
 
 angular
   .module('BlocJams')
-  .controller('Collection.controller', ['$scope', 'ConsoleLogger', function($scope, ConsoleLogger) {
+  .controller('Collection.controller', ['$scope',  function($scope, ConsoleLogger) {
   
-  $scope.consoleLogger = ConsoleLogger;
 
   $scope.albums = [];
 
@@ -132,9 +131,8 @@ angular
 
 angular
   .module('BlocJams')
-  .controller('Album.controller', ['$scope', 'SongPlayer', 'ConsoleLogger', function($scope, SongPlayer, ConsoleLogger) {
+  .controller('Album.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer ) {
 
-  $scope.consoleLogger = ConsoleLogger; 
 
   $scope.album = angular.copy(albumPicasso);
 
@@ -181,7 +179,7 @@ angular
 
 angular
   .module('BlocJams')
-  .controller('PlayerBar.controller', ['$scope', 'SongPlayer', 'ConsoleLogger', function($scope, SongPlayer, ConsoleLogger) {
+  .controller('PlayerBar.controller', ['$scope', 'SongPlayer',  function($scope, SongPlayer) {
   
   $scope.songPlayer = SongPlayer;
   
@@ -191,6 +189,10 @@ angular
   .module('BlocJams')
   .service('SongPlayer', function() {
    
+    var trackIndex = function(album, song) {
+     return album.songs.indexOf(song);
+   };
+
    return {
      currentSong: null,
      currentAlbum: null,
@@ -205,28 +207,25 @@ angular
      setSong: function(album, song) {
        this.currentAlbum = album;
        this.currentSong = song;
-     }
+     },
+     next: function() {
+       var currentTrackIndex = trackIndex(this.currentAlbum, this.currentSong);
+       currentTrackIndex++;
+       if (currentTrackIndex >= this.currentAlbum.songs.length) {
+         currentSong: null;
+       }
+       this.currentSong = this.currentAlbum.songs[currentTrackIndex];
+     },
+     previous: function(){
+      var currentTrackIndex = trackIndex(this.currentAlbum, this.currentSong);
+       currentTrackIndex--;
+       if (currentTrackIndex < 0) {
+         currentSong: null;
+       }
+
+       this.currentSong = this.currentAlbum.songs[currentTrackIndex];
+     },
    };
  });
 
-angular
-  .module('BlocJams')
-  .service('ConsoleLogger', function() {
-  
-    return {
-        
-        string: "Type Here",
-        
-        log: function(string) {
-          console.log(string)
-        },
-      
-    }
 
-    // log:function() {
-    //   console.log("hello world");
-    // };
-
-
-  
- });

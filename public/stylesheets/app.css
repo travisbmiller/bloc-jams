@@ -237,6 +237,9 @@ td.song-number {
     margin-top: -10px;
     margin-left: -10px; }
 
+.hideMe {
+  visibility: hidden; }
+
 .default-button {
   background-color: #d2287b;
   color: white;
