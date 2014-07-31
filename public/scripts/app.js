@@ -298,3 +298,101 @@ angular
     }
    };
   });
+
+angular
+  .module('BlocJams')
+  .directive('clickme', function(){
+
+  return {
+     templateUrl: '/templates/directives/clickme.html', 
+     replace: true,
+     restrict: 'E',
+     link: function(scope, element, attributes) {
+      
+      $clickMe = element;
+
+      $clickMe.click(function(){
+       alert("it worked! Ya!");
+      });
+    }
+  }
+});
+
+angular
+  .module('BlocJams')
+  .directive('classify', function(){
+
+    
+
+  return {
+    replace: true,
+    restrict: 'EAC',
+    link: function(scope, element, attributes) {
+      
+      
+      var classInput = $(element).text();
+      $(element).addClass(classInput);
+  
+    }
+  }
+});
+
+  angular
+  .module('BlocJams')
+  .directive('counthovertime', function(){
+
+    
+
+  return {
+    templateUrl: '/templates/directives/clickme.html',
+    replace: true,
+    restrict: 'A',
+    link: function(scope, element, attributes) {
+      
+      var $hovedElement = element,
+                  count = 0,
+              timerIsOn = 0,
+                      t;
+      
+      // this add 1 to the counter and then refirers every sec adding 1 to the counter
+      var countTimer = function(){
+        count = count + 1;
+        
+        t = setTimeout(function(){countTimer()}, 1000);
+      };
+
+      var startTimer = function() {
+          timerIsOn = 1;
+          countTimer();
+      };
+
+      var stopTimer = function() {
+        clearTimeout(t);
+        timerIsOn = 0;
+      };
+
+      $hovedElement.hover(function(){
+          
+          // setting count back to 0 for new hover
+          if (count !== 0) {
+            count = 0;
+          }
+          
+          //firing countTimer after 1 sec of hover time
+          setTimeout(function(){ startTimer() }, 1000);
+
+        }, function(){
+
+          // stop out timer
+          stopTimer();
+
+          // hover off will console log count
+          console.log("You hoved over this element for " + count + " seconds");
+          
+        }
+      )  
+    }  
+  }
+});
+
+ 
