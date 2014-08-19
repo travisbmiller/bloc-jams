@@ -298,17 +298,21 @@ angular
         
 
         scope.trackThumb = function() {
-         $document.bind('mousemove.thumb', function(event){
+         $document.on('mousemove.thumb', function(event){
            var percent = calculateSliderPercentFromMouseEvent($seekBar, event);
-           scope.$apply(function(){
-             scope.value = percent * scope.max;
+           
+           scope.$apply(function() {
+            scope.value = percent * scope.max;
            });
+            
+
+           
          });
  
          //cleanup
-         $document.bind('mouseup.thumb', function(){
-           $document.unbind('mousemove.thumb');
-           $document.unbind('mouseup.thumb');
+         $document.on('mouseup.thumb', function(){
+           $document.off('mousemove.thumb');
+           $document.off('mouseup.thumb');
          });
        };
       }
